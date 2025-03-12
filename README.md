@@ -37,10 +37,10 @@ The `.isort.config` file will help define how it will sort them.
 
 A code linter is a dev tool that analyses source code for errors, vulnerabilities and stylistic issues to improve code quality.
 
-Ruff is a very fast code linter that replaces traditional code linters like Flake8 and Pylint.
+[Ruff](https://docs.astral.sh/ruff/) is a very fast code linter that replaces traditional code linters like Flake8 and Pylint.
 
 We can run `ruff check .` to look for errors on the entire current directory, and `ruff check --fix` to fix the issues detected. 
 
-Not all errors can be fixed. We can configure how to fix some errors on the `pyproject.toml` file.
+Not all errors can be fixed. We can configure how to fix some errors on the `pyproject.toml` file under the `[tool.ruff]` part.
 
 Ruff can also replace isort, even though not all the functionalities
