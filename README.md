@@ -33,3 +33,10 @@ On the command line type `isort .` to sort imports in the entire directory or `i
 
 The `.isort.config` file will help define how it will sort them.
 
+### Code linters
+
+A code linter is a dev tool that analyses source code for errors, vulnerabilities and stylistic issues to improve code quality.
+
+Ruff is a very fast code linter that replaces traditional code linters like Flake8 and Pylint.
+
+We can run `ruff check .` to run ruff on the entire current directory, and `ruff fix` to fix the issues detected. Not all errors can be fixed.
