@@ -39,4 +39,8 @@ A code linter is a dev tool that analyses source code for errors, vulnerabilitie
 
 Ruff is a very fast code linter that replaces traditional code linters like Flake8 and Pylint.
 
-We can run `ruff check .` to run ruff on the entire current directory, and `ruff fix` to fix the issues detected. Not all errors can be fixed.
+We can run `ruff check .` to look for errors on the entire current directory, and `ruff check --fix` to fix the issues detected. 
+
+Not all errors can be fixed. We can configure how to fix some errors on the `pyproject.toml` file.
+
+Ruff can also replace isort, even though not all the functionalities
