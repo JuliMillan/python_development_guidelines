@@ -116,3 +116,14 @@ Pre-commit hooks work for checking for errors in the code and making sure everyt
 In the [.pre-commit-config.yaml file](.pre-commit-config.yaml) we list the tools and configurations we want to follow.
 
 To install run `pre-commit install-hooks`, then to install the hooks (configs in the yaml file) run `pre-commit install-hooks`, then `pre-commit run` will run it on the uncommitted files. For all files we run `pre-commit run --all-files`
+
+## Debugging
+
+To choose configurations for the debugger in VSCode, we need to create a [`launch.json` file](.vscode\launch.json).
+
+Whenever we want to debug, we mark the breakpoint line where the debugger will stop running the code.
+
+Open the file you want to debug, and run the debugger in the configuration of current file. On the left panel, we'll see the variables created and the calls of the function and a list of breakpoints.
+
+On top there are buttons with the possible actions.
+
