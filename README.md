@@ -108,4 +108,11 @@ Special cases:
   - Iterable containers (collections) that allows you to look up a key and retrieve its value. The generic form of a dictionary.
   - We use the Mapping obj from collections.abc (abstract base classes): `from collections.abc import Mapping`. And use it like `param: Mapping[str, int]`.
 - `NoReturn` can be used if the function don't return anything.
-- 
+
+### [pre-commit](https://pre-commit.com/)
+
+Pre-commit hooks work for checking for errors in the code and making sure everything follows the same guidelines before commiting.
+
+In the [.pre-commit-config.yaml file](.pre-commit-config.yaml) we list the tools and configurations we want to follow.
+
+To install run `pre-commit install-hooks`, then to install the hooks (configs in the yaml file) run `pre-commit install-hooks`, then `pre-commit run` will run it on the uncommitted files. For all files we run `pre-commit run --all-files`
