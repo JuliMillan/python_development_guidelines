@@ -1,5 +1,8 @@
 # Course Python: Guidelines, Tools and Packages
 
+> This repo is a follow-along of the Udemy course *Python: Coding Guidelines, Tools, Tests and Packages* 
+> The original course repository can be found [here](https://github.com/franneck94/UdemyPythonProEng/tree/master).
+
 Create and activate environment, install requirements.
 
 ```python
@@ -43,4 +46,66 @@ We can run `ruff check .` to look for errors on the entire current directory, an
 
 Not all errors can be fixed. We can configure how to fix some errors on the `pyproject.toml` file under the `[tool.ruff]` part.
 
-Ruff can also replace isort, even though not all the functionalities
+Ruff can also replace isort, even though not all the functionalities.
+
+### Formatters
+
+Tools that make sure the code follows certain format guidelines.
+
+- [Black](https://black.readthedocs.io/en/stable/)
+
+Industry standard. Not much configurable style.
+
+Run it with `python -m black <file or directory>`.
+
+In the `pyproject.toml` file, we can add settings at the `[tool.black]` part.
+
+- Ruff Formatter can also be used and it's much faster. It also has some improvements.
+
+In the `settings.json` file, change the `editor.defaultFormatter` to `charliermarsh.ruff`, and add the wanted configurations to the `pyproject.toml` file in the `[tool.ruff.format]` section. And then run  `ruff format .`.
+
+## Documentation: Type Annotations and Docstrings
+
+> dunder: comes from double underscore and it reffers to special class methods that python automatically calls as a response to certain operations.
+
+### Docstring
+
+> See examples in the [Docstrings folder](\Docstrings).
+
+Documentation string for functions, methods, classes or files. Always used below the documented element.
+
+- [Google style](Docstrings\vector_google_style.py): Starts with a brief description, follows a list of arguments (Args), then possible outcomes of the element (Raises if it couls raise an error), Return if the function returns something.
+- [Numpy style](Docstrings\vector_numpy_style.py): Starts with brief description; follows with Paramters and dashes (that render as a title), the list of parameters has their data types and if it's optional or not; then the outcome (Raises or Returns), dashes, and the data type of whatever is returned.
+
+#### autoDoc
+
+It's an automatic python docstring generator extension for VSCode. It will generate the docstring structure of choosing.
+
+We can configure it from the `settings.json` file in the autoDocstring section.
+
+When writing a function, add 3 quotation marks and it will give you the option to create the docstring.
+
+### [Type Annotations](https://docs.python.org/3/library/typing.html)
+
+> [typing cheatsheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
+
+Adding data types to arguments and outputs of functions. They're not used during runtime, but are a useful tool to check for input data types before running code. The IDE will show an error if the arguments don't match the expected data types.
+
+For simple functions, they can be useful by themselves, but they can also be combined with docstrings.
+
+See some examples [here](TypeAnnotations\vector_type_annotations.py).
+
+Special cases:
+
+- If the arguments could take all types of data, we can use the `Any` type (`from typing import Any`).
+
+- If the argument is optional we can use `Optional` (`from typing import Optional`). Like this: `param: Optional[int] = None`. Only acceptable for arguments that have default value = None. 
+  - Can be replaced by `param: list[int] | None = None`.
+
+- If the input of a function is another function, we should use `Callable` (`from collections.abc import Callable`). See example [here](TypeAnnotations\callable.py).
+- For dictionaries we use `param: dict[str, int]`. The keys are strings and values are integers.
+- Mappings:
+  - Iterable containers (collections) that allows you to look up a key and retrieve its value. The generic form of a dictionary.
+  - We use the Mapping obj from collections.abc (abstract base classes): `from collections.abc import Mapping`. And use it like `param: Mapping[str, int]`.
+- `NoReturn` can be used if the function don't return anything.
+- 
