@@ -175,3 +175,36 @@ For this we should add `mkdocs`, `mkdocstrings`, `mkdocs-material` and `Pygments
 The `mkdocs.yml` will have all the information necessary to create a website for the documentation.
 
 We can build that website by running `mkdocs build` and `mkdocs serve` to see the docs on a local server. `Ctrl + c` to exit the server.
+
+This documentation can be deployed as GitHub pages directly from GitHub.
+
+- On VSCode create a deploy branch with mkdocs running `mkdocs gh-deploy`.
+- On GitHub go to `Settings` -> `Pages` -> `Deploy from a branch`, `Branch: gh-pages`, directory we want to deploy.
+
+GitHub will start deploying automatically.
+
+### GitHub workflows
+
+#### Pre-commits
+
+When you work locally, you will have everything setup as you like and checked by the `pre-commit-config.yml` but, if someone else is collaborating with your project, you can force them to follow the same standards you use by defining it in the github workflows `pre-commit.yml`.
+
+#### Tests
+
+We can define the code tests for each operating system, branches, running commands, installing requirements, etc.
+
+#### Documentation
+
+The documentation can be automatically updated every time there is a new code release if we specify it in the `documentation.yml` file.
+
+#### Publish
+
+If we sign up to PyPi, we can automatically upload and update the package there by reading our credentials from the `publish.yml` file.
+
+#### Codeql
+
+This file will look for errors in the code. It not necessary.
+
+#### Code coverage
+
+Not a GitHub action. We can run it locally with `pytest --cov=<tests to run>--cov-report=html` and it will check how much of our code has been tested during the unit tests we defined in our test directory. So we will know if any line in our methods or functions has not been tested.
