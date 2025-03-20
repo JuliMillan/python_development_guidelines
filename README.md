@@ -127,3 +127,51 @@ Open the file you want to debug, and run the debugger in the configuration of cu
 
 On top there are buttons with the possible actions.
 
+## Modules and Packages
+
+We create a [directory](Packaging\my_package) that will be the name of the package and, inside, we place a [`__init__.py` file](Packaging\my_package\__init__.py). This will be the main file of our package.
+
+We will create a [`main.py`](Packaging\main.py) outside of the package directory. It could be called any other name, but this is the standard. Here we will define functions with what we want the package to do when called.
+
+> At this point, it's mandatory that the main file is on directory above the package folder. This will change later.
+
+To create a subpackage, we can create [another directory](Packaging\my_package\printing) inside my_package, and there another [`__init__.py`](Packaging\my_package\printing\__init__.py) where the functionality will be defined.
+
+To test these packages, run `python main.py` from the terminal.
+
+### Versioning
+
+To set a version of the package, we create a [version folder](Packaging\my_package\version) with an [`__init__.py` file](Packaging\my_package\version\__init__.py) that includes the semantic version of the current package, and we print it in the `main.py`.
+
+### Private functions
+
+There is no way to hide functions in a python package, but we can make it a bit more difficult for the functions to be modified.
+
+Using an underscore (`_`) before the name of the file or function indicates that it is private and should not be used directly by the user.
+
+To make it public again, we could then import that function from the init file, using a dot before the subdirectory name.
+
+### Metadata and installation
+
+There are many templates for the files required in a package, like [this one from Microsoft](https://github.com/microsoft/python-package-template/tree/main), cloned [here](python-package-template). Or the one from the course [here](PythonProjectTemplate), and including code for creating a documentation website.
+
+
+#### [pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
+
+It replaces the `setup.py` file.
+
+- The first thing to define is the `build-system`, that currently is handled by a library called [`setuptools`]((https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)).
+- Then we add all the metadata about our `project`, including `name`, `authors`, `description`, `license`, etc.
+
+To install a package locally, we can use `pip install -e <python project path>`
+
+
+### Publishing a package
+
+We need a `docs` folder, and an `mkdocs.yml` file.
+
+For this we should add `mkdocs`, `mkdocstrings`, `mkdocs-material` and `Pygments` to the `requirements-dev`.
+
+The `mkdocs.yml` will have all the information necessary to create a website for the documentation.
+
+We can build that website by running `mkdocs build` and `mkdocs serve` to see the docs on a local server. `Ctrl + c` to exit the server.
